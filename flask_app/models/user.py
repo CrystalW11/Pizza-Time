@@ -3,7 +3,7 @@ from re import compile
 from flask_app.config.mysqlconnection import connectToMySQL
 
 EMAIL_REGEX = compile(r"^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$")
-# from flask_app.models.nextfix import nextfix
+# from flask_app.models.pizza import pizza
 
 
 class User:
