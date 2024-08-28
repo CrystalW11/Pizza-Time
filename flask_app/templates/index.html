@@ -10,7 +10,81 @@
 </head>
 
 <body>
-
+    <div class="container">
+        <h1 class="text-center mb-3 mt-3">Pizza Shack</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div custom-box>
+                    <h2 class="mb-3">Register</h2>
+                    {# register errors here #}
+                    {% with messages = get_flashed_messages(category_filter=['register']) %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible fade pizza" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    <form action="/users/register" class="mb-3 mt-3 col" METHOD="post">
+                        <div class="row mb-3"></div>
+                        <div class="input-group text-center mb-3 table col">
+                            <label for="first_name" class="form-label mb-3 input-group-text">First Name:</label>
+                            <input type="text" name="first_name" id="first_name"
+                                class="form-label mb-3 input-group-text">
+                        </div>
+                        <div class="input-group text-center mb-3">
+                            <label for="last_name" class="form-label mb-3 input-group-text">Last Name:</label>
+                            <input type="text" name="last_name" id="last_name" class="form-label mb-3 input-group-text">
+                        </div>
+                        <div class="input-group text-center mb-3">
+                            <label for="email" class="form-label mb-3 input-group-text">Email:</label>
+                            <input type="email" name="email" id="email" class="form-label mb-3 input-group-text">
+                        </div>
+                        <div class="input-group text-center mb-3">
+                            <label for="password" class="form-label mb-3 input-group-text">Password:</label>
+                            <input type="password" name="password" id="password"
+                                class="form-label mb-3 input-group-text">
+                        </div>
+                        <div class="input-group text-center mb-3">
+                            <label for="confirm_password" class="form-label mb-3 input-group-text">Confirm
+                                Password:</label>
+                            <input type="password" name="confirm_password" id="confirm_password"
+                                class="form-label mb-3 input-group-text">
+                        </div>
+                        <button type="submit" class="btn btn-primary" href="/pizzas/login">Register</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="custom-box">
+                <h2 class="mb-3">Login</h2>
+                {# login errors here #}
+                <ul>
+                    {% with messages = get_flashed_messages(category_filter=['login']) %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                </ul>
+                <form action="/users/login" class="mb-3 mt-3" method="post">
+                    <div class="input-group text-center mb-3">
+                        <label for="email" class="form-label mb-3 input-group-text">Email:</label>
+                        <input type="text" name="email" id="email" class="form-label mb-3 input-group-text">
+                    </div>
+                    <div class="input-group text-center mb-3">
+                        <label for="password" class="form-label mb-3 input-group-text">Password:</label>
+                        <input type="password" name="password" id="password" class="form-label mb-3 input-group-text">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

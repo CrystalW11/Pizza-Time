@@ -10,7 +10,73 @@
 </head>
 
 <body>
-
+        <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/pizzas/all">All Pizzas</a>
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="bg-body-secondary mb-3 p-1">
+            <div class="container d-flex justify-content-between align-items-center">
+                <p class="mb-0">{{user.email}}</p>
+                <p class="mb-0">
+                    <a href="/users/logout">Logout</a>
+                </p>
+            </div>
+        </div>
+        <div class="container">
+            <h1 class="display-3 mb-3">Edit a Pizza</h1>
+            {# Error Messages #}
+            {% with errors = get_flashed_messages() %}
+            {% if errors %}
+            {% for error in errors %}
+            <div class="alert alert-warning alert-dismissible fade pizza" role="alert">
+                {{ error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <div class="card shadow mb-3">
+                <div class="bard-body mb-3 p-3">
+                    <form action="/pizzas/update" method="post">
+                        <input type="hidden" name="pizza_id" value="{{ pizza.id }}" />
+                        <div class="form-floating mb-3">
+                            <input type="text" name="cheese" id="cheese" class="form-control" value="{{pizza.cheese}}" />
+                            <label for="cheese" aria-label="name">Cheese Topping:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea name="pepperoni" id="pepperoni"
+                                class="form-control textarea"> {{pizza.pepperoni}} </textarea>
+                            <label for="pepperoni" aria-label="name">Pepperoni Topping:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="supreme" id="supreme" class="form-control textarea">
+                            {{pizza.supreme}} </>
+                            <label for="supreme" aria-label="name">Supreme Toppings:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea name="comment" id="comment" class="form-control textarea"> {{pizza.comment}} </textarea>
+                            <label for="comment" aria-label="name">Pizza Comments:</label>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
