@@ -59,20 +59,20 @@ class Pizza:
 
         return is_valid
 
-    @classmethod
-    def find_all(cls):
-        """This method finds all the pizzas in the database."""
+    # @classmethod
+    # def find_all(cls):
+    #     """This method finds all the pizzas in the database."""
 
-        query = "SELECT * FROM pizzas:"
-        list_of_dicts = connectToMySQL(Pizza._db).query_db(query)
-        pprint(list_of_dicts)
-        pizzas = []
+    #     query = "SELECT * FROM pizzas:"
+    #     list_of_dicts = connectToMySQL(Pizza._db).query_db(query)
+    #     pprint(list_of_dicts)
+    #     pizzas = []
 
-        for each_dict in list_of_dicts:
-            pizza = Pizza(each_dict)
-            pizzas.append(pizza)
+    #     for each_dict in list_of_dicts:
+    #         pizza = Pizza(each_dict)
+    #         pizzas.append(pizza)
 
-        return pizzas
+    #     return pizzas
 
     @classmethod
     def find_all_with_users(cls):
@@ -103,95 +103,95 @@ class Pizza:
 
         return pizzas
 
-    @classmethod
-    def create(cls, form_data):
-        """This method creates a pizza from a form."""
+    # @classmethod
+    # def create(cls, form_data):
+    #     """This method creates a pizza from a form."""
 
-        query = """
-        INSERT INTO pizzas
-        (title, network, release_date, comment, user_id)
-        VALUES
-        (%(cheese)s, %(pepperoni)s, %(supreme)s, %(comment)s, %(user_id)s);
-        """
-        pizzas_id = connectToMySQL(Pizza._db).query_db(query, form_data)
+    #     query = """
+    #     INSERT INTO pizzas
+    #     (title, network, release_date, comment, user_id)
+    #     VALUES
+    #     (%(cheese)s, %(pepperoni)s, %(supreme)s, %(comment)s, %(user_id)s);
+    #     """
+    #     pizzas_id = connectToMySQL(Pizza._db).query_db(query, form_data)
 
-        return pizzas_id
+    #     return pizzas_id
 
-    @classmethod
-    def find_by_email(cls, email):
-        """This method finds a pizza by email."""
+    # @classmethod
+    # def find_by_email(cls, email):
+    #     """This method finds a pizza by email."""
 
-        query = """SELECT * FROM pizzas WHERE email = %(email)s;"""
-        data = {"email": email}
-        list_of_dicts = connectToMySQL(Pizza._db).query_db(query, data)
-        if len(list_of_dicts) == 0:
-            return None
-        pizza = Pizza(list_of_dicts[0])
-        return pizza
+    #     query = """SELECT * FROM pizzas WHERE email = %(email)s;"""
+    #     data = {"email": email}
+    #     list_of_dicts = connectToMySQL(Pizza._db).query_db(query, data)
+    #     if len(list_of_dicts) == 0:
+    #         return None
+    #     pizza = Pizza(list_of_dicts[0])
+    #     return pizza
 
-    @classmethod
-    def find_by_pizza_id(cls, pizza_id):
-        """This method finds a pizza by pizza_id."""
+    # @classmethod
+    # def find_by_pizza_id(cls, pizza_id):
+    #     """This method finds a pizza by pizza_id."""
 
-        query = """SELECT * FROM pizzas WHERE id = %(pizza_id)s;"""
-        data = {"pizza_id": pizza_id}
-        list_of_dicts = connectToMySQL(Pizza._db).query_db(query, data)
-        if len(list_of_dicts) == 0:
-            return None
-        pizza = Pizza(list_of_dicts[0])
-        return pizza
+    #     query = """SELECT * FROM pizzas WHERE id = %(pizza_id)s;"""
+    #     data = {"pizza_id": pizza_id}
+    #     list_of_dicts = connectToMySQL(Pizza._db).query_db(query, data)
+    #     if len(list_of_dicts) == 0:
+    #         return None
+    #     pizza = Pizza(list_of_dicts[0])
+    #     return pizza
 
-    @classmethod
-    def find_by_user_id(cls, pizza_id):
-        """This method finds a pizza and the user by the pizza id."""
-        query = """
-        SELECT * FROM pizzas
-        JOIN users
-        ON pizzas.user_id = users.id
-        WHERE pizzas.id = %(pizza_id)s;
-        """
-        data = {"pizza_id": pizza_id}
-        list_of_dicts = connectToMySQL(Pizza._db).query_db(query, data)
-        pprint(list_of_dicts)
-        pizza = Pizza(list_of_dicts[0])
-        one_dict = list_of_dicts[0]
-        user_data = {
-            "id": list_of_dicts[0]["users.id"],
-            "first_name": list_of_dicts[0]["first_name"],
-            "last_name": list_of_dicts[0]["last_name"],
-            "email": list_of_dicts[0]["email"],
-            "password": list_of_dicts[0]["password"],
-            "created_at": list_of_dicts[0]["users.created_at"],
-            "updated_at": list_of_dicts[0]["users.updated_at"],
-        }
+    # @classmethod
+    # def find_by_user_id(cls, pizza_id):
+    #     """This method finds a pizza and the user by the pizza id."""
+    #     query = """
+    #     SELECT * FROM pizzas
+    #     JOIN users
+    #     ON pizzas.user_id = users.id
+    #     WHERE pizzas.id = %(pizza_id)s;
+    #     """
+    #     data = {"pizza_id": pizza_id}
+    #     list_of_dicts = connectToMySQL(Pizza._db).query_db(query, data)
+    #     pprint(list_of_dicts)
+    #     pizza = Pizza(list_of_dicts[0])
+    #     one_dict = list_of_dicts[0]
+    #     user_data = {
+    #         "id": list_of_dicts[0]["users.id"],
+    #         "first_name": list_of_dicts[0]["first_name"],
+    #         "last_name": list_of_dicts[0]["last_name"],
+    #         "email": list_of_dicts[0]["email"],
+    #         "password": list_of_dicts[0]["password"],
+    #         "created_at": list_of_dicts[0]["users.created_at"],
+    #         "updated_at": list_of_dicts[0]["users.updated_at"],
+    #     }
 
-        user = User(user_data)
-        pizza.user = user
-        return pizza
+    #     user = User(user_data)
+    #     pizza.user = user
+    #     return pizza
 
-    @classmethod
-    def update(cls, form_data):
-        """This method updates a pizza in the database."""
-        print("\n\n\n\n\line247: ", form_data)
-        query = """
-        UPDATE pizzas
-        SET cheese = %(cheese)s,
-        pepperoni = %(pepperoni)s,
-        supreme = %(supreme)s,
-        comment = %(comment)s,
-        WHERE id = %(pizza_id)s;
-        """
+    # @classmethod
+    # def update(cls, form_data):
+    #     """This method updates a pizza in the database."""
+    #     print("\n\n\n\n\line247: ", form_data)
+    #     query = """
+    #     UPDATE pizzas
+    #     SET cheese = %(cheese)s,
+    #     pepperoni = %(pepperoni)s,
+    #     supreme = %(supreme)s,
+    #     comment = %(comment)s,
+    #     WHERE id = %(pizza_id)s;
+    #     """
 
-        connectToMySQL(Pizza._db).query_db(query, form_data)
-        return
+    #     connectToMySQL(Pizza._db).query_db(query, form_data)
+    #     return
 
-    @classmethod
-    def delete(cls, pizza_id):
-        """This method deletes a pizza in the database"""
+    # @classmethod
+    # def delete(cls, pizza_id):
+    #     """This method deletes a pizza in the database"""
 
-        query = """
-        DELETE FROM pizzas
-        WHERE id = %(pizza_id)s;
-        """
-        data = {"pizza_id": pizza_id}
-        return connectToMySQL(Pizza._db).query_db(query, data)
+    #     query = """
+    #     DELETE FROM pizzas
+    #     WHERE id = %(pizza_id)s;
+    #     """
+    #     data = {"pizza_id": pizza_id}
+    #     return connectToMySQL(Pizza._db).query_db(query, data)

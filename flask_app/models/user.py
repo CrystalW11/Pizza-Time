@@ -9,14 +9,18 @@ EMAIL_REGEX = compile(r"^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$")
 class User:
     _db = "pizza-time"
 
-    def __init__(self, data):
-        self.id = data["id"]
-        self.first_name = data["first_name"]
-        self.last_name = data["last_name"]
-        self.email = data["email"]
-        self.password = data["password"]
-        self.created_at = data["created_at"]
-        self.updated_at = data["updated_at"]
+    def __init__(self, form_data):
+        self.id = form_data["id"]
+        self.first_name = form_data["first_name"]
+        self.last_name = form_data["last_name"]
+        self.email = form_data["email"]
+        self.password = form_data["password"]
+        self.address = form_data["address"]
+        self.city = form_data["city"]
+        self.state = form_data["state"]
+        self.created_at = form_data["created_at"]
+        self.updated_at = form_data["updated_at"]
+        self.users = []
 
     @staticmethod
     def register_form_is_valid(form_data):
@@ -55,6 +59,27 @@ class User:
             flash("Passwords do not match.", "register")
             is_valid = False
 
+        if len(form_data["address"].strip()) == 0:
+            flash("Please enter your address.", "register")
+            is_valid = False
+        elif len(form_data["address"].strip()) < 5:
+            flash("Address must be at least five characters.", "register")
+            is_valid = False
+
+        if len(form_data["city"].strip()) == 0:
+            flash("Please enter your city.", "register")
+            is_valid = False
+        elif len(form_data["city"].strip()) < 2:
+            flash("City must be at least two characters.", "register")
+            is_valid = False
+
+        if len(form_data["state"].strip()) == 0:
+            flash("Please enter your state.", "register")
+            is_valid = False
+        elif len(form_data["state"].strip()) < 2:
+            flash("State must be at least two characters.", "register")
+            is_valid = False
+
         return is_valid
 
     @staticmethod
@@ -80,12 +105,12 @@ class User:
 
     @classmethod
     def register(cls, user_data):
-        """This method creates a new user in the database."""
+        # """This method creates a new user in the database."""
         query = """
         INSERT INTO users
-        (first_name, last_name, email, password)
+        (first_name, last_name, email, password, address, city, state, created_at, updated_at)
         VALUES
-        (%(first_name)s, %(last_name)s, %(email)s, %(password)s);
+        (%(first_name)s, %(last_name)s, %(email)s, %(password)s, %(address)s, %(city)s, %(state)s, NOW(), NOW());
         """
 
         user_id = connectToMySQL(User._db).query_db(query, user_data)

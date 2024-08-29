@@ -33,6 +33,9 @@ def register():
         "last_name": request.form["last_name"],
         "email": request.form["email"],
         "password": hashed_pw,
+        "address": request.form["address"],
+        "city": request.form["city"],
+        "state": request.form["state"],
     }
     user_id = User.register(user_data)
 
