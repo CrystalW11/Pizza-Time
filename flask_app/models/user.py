@@ -3,7 +3,6 @@ from re import compile
 from flask_app.config.mysqlconnection import connectToMySQL
 
 EMAIL_REGEX = compile(r"^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$")
-# from flask_app.models.pizza import pizza
 
 
 class User:
@@ -20,7 +19,7 @@ class User:
         self.state = form_data["state"]
         self.created_at = form_data["created_at"]
         self.updated_at = form_data["updated_at"]
-        self.users = []
+        self.pizzas = []
 
     @staticmethod
     def register_form_is_valid(form_data):
@@ -105,7 +104,7 @@ class User:
 
     @classmethod
     def register(cls, user_data):
-        # """This method creates a new user in the database."""
+        """This method creates a new user in the database."""
         query = """
         INSERT INTO users
         (first_name, last_name, email, password, address, city, state, created_at, updated_at)

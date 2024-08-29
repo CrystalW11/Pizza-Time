@@ -1,4 +1,4 @@
-from flask_app import app, bcrypt
+from flask_app import app
 from flask_app.models.pizza import Pizza
 from flask_app.models.user import User
 from flask import flash, render_template, redirect, request, session
@@ -36,21 +36,13 @@ def create_pizzas():
     if not Pizza.form_is_valid(request.form):
         return redirect("/pizzas/new")
 
-    # down here the form is valid!!
-    Pizza.create(request.form)
+    form_data = request.form.to_dict()
+
+    # Convert the toppings list to a comma-separated string
+    form_data["toppings"] = ", ".join(request.form.getlist("toppings[]"))
+
+    Pizza.create(form_data)
     return redirect("/pizzas/all")
-
-
-@app.get("/pizzas/dashboard")
-def pizzas_dashboard():
-    """This route displays the user dashboard."""
-    if "user_id" not in session:
-        flash("You must be logged in to view the page.", "login")
-        return redirect("/")
-
-    user = User.find_by_user_id(session["user_id"])
-
-    return render_template("dashboard.html", user=user)
 
 
 @app.get("/pizzas/<int:pizza_id>")
@@ -61,10 +53,10 @@ def pizzas_id(pizza_id):
         flash("You must be logged in to view the page.", "login")
         return redirect("/")
 
-    pizza = Pizza.find_by_user_id(pizza_id)
+    pizza = Pizza.find_by_id_with_user(pizza_id)
     user = User.find_by_user_id(session["user_id"])
 
-    return render_template("pizza_program.html", user=user, pizza=pizza)
+    return render_template("pizza_details.html", user=user, pizza=pizza)
 
 
 @app.get("/pizzas/<int:pizza_id>/edit")

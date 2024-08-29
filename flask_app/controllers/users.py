@@ -78,15 +78,3 @@ def logout():
     """This route clears session."""
     session.clear()
     return redirect("/")
-
-
-@app.get("/users/pizzas")
-def pizzas():
-    """This route displays the user pizzas."""
-    if "user_id" not in session:
-        flash("You must be logged in to view the page.", "login")
-        return redirect("/")
-
-    user = User.find_by_user_id(session["user_id"])
-
-    return render_template("all_pizzas.html", user=user)
