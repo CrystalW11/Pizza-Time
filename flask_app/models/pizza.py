@@ -14,7 +14,7 @@ EMAIL_REGEX = re.compile(r"^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$")
 class Pizza:
     """This Pizza class."""
 
-    _db = "pizza_db"
+    _db = "pizza-time"
 
     def __init__(self, data):
         self.id = data["id"]
