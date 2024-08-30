@@ -1,0 +1,28 @@
+body {
+    background-color: #333;
+    color: #f8f9fa;
+}
+
+.custom-box {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid #555;
+    transition: transform 0.3s ease-in-out;
+}
+
+.custom-box:hover {
+    transform: scale(1.05);
+}
+
+.form-label {
+    width: 100%;
+    text-align: left;
+}
+
+.input-group-text {
+    width: 100%;
+    justify-content: flex-start;
+}
+
