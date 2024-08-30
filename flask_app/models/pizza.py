@@ -134,7 +134,7 @@ class Pizza:
     @classmethod
     def update(cls, form_data):
         """This method updates a pizza in the database."""
-        print("\n\n\n\n\line247: ", form_data)
+
         query = """
         UPDATE pizzas
         SET method = %(method)s,

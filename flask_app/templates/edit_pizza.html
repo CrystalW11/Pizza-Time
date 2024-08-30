@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Edit Pizza</title>
+    <title>Edit Your Pizza</title>
 </head>
 
 <body>
@@ -51,27 +51,74 @@
             <div class="card shadow mb-3">
                 <div class="bard-body mb-3 p-3">
                     <form action="/pizzas/update" method="post">
-                        <input type="hidden" name="pizza_id" value="{{ pizza.id }}" />
                         <div class="form-floating mb-3">
-                            <input type="text" name="cheese" id="cheese" class="form-control" value="{{pizza.cheese}}" />
-                            <label for="cheese" aria-label="name">Cheese Topping:</label>
+                            <select name="method" id="method" class="form-select">
+                                <option value="delivery" {% if pizza.method == "delivery" %}selected{% endif %}>Delivery</option>
+                                <option value="pickup" {% if pizza.method == "pickup" %}selected{% endif %}>Pickup</option>
+                            </select>
+                            <label for="method">Method:</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <textarea name="pepperoni" id="pepperoni"
-                                class="form-control textarea"> {{pizza.pepperoni}} </textarea>
-                            <label for="pepperoni" aria-label="name">Pepperoni Topping:</label>
+                            <select name="size" id="size" class="form-select">
+                                <option value="small" {% if pizza.size == "small" %}selected{% endif %}>Small</option>
+                                <option value="medium" {% if pizza.size == "medium" %}selected{% endif %}>Medium</option>
+                                <option value="large" {% if pizza.size == "large" %}selected{% endif %}>Large</option>
+                            </select>
+                            <label for="size">Size:</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" name="supreme" id="supreme" class="form-control textarea">
-                            {{pizza.supreme}} </>
-                            <label for="supreme" aria-label="name">Supreme Toppings:</label>
+                            <select name="crust" id="crust" class="form-select">
+                                <option value="regular" {% if pizza.crust == "regular" %}selected{% endif %}>Regular</option>
+                                <option value="thin" {% if pizza.crust == "thin" %}selected{% endif %}>Thin</option>
+                                <option value="thick" {% if pizza.crust == "thick" %}selected{% endif %}>Pan</option>
+                                <option value="stuffed" {% if pizza.crust == "stuffed" %}selected{% endif %}>Stuffed</option>
+                            </select>
+                            <label for="crust">Crust:</label>
                         </div>
+                        
                         <div class="form-floating mb-3">
-                            <textarea name="comment" id="comment" class="form-control textarea"> {{pizza.comment}} </textarea>
-                            <label for="comment" aria-label="name">Pizza Comments:</label>
+                            Toppings:
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="toppings[]" value="Extra Cheese" {% if "Extra Cheese" in pizza.toppings %}checked{% endif %}>
+                                <label class="form-check-label" for="inlineCheckbox1">Extra Cheese</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="toppings[]" value="Pepperoni" {% if "Pepperoni" in pizza.toppings %}checked{% endif %}>
+                                <label class="form-check-label" for="inlineCheckbox2">Pepperoni</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="toppings[]" value="Sausage" {% if "Sausage" in pizza.toppings %}checked{% endif %}>
+                                <label class="form-check-label" for="inlineCheckbox3">Sausage</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="toppings[]" value="Canadian Bacon" {% if "Canadian Bacon" in pizza.toppings %}checked{% endif %}>
+                                <label class="form-check-label" for="inlineCheckbox4">Canadian Bacon</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="toppings[]" value="Mushrooms" {% if "Mushrooms" in pizza.toppings %}checked{% endif %}>
+                                <label class="form-check-label" for="inlineCheckbox5">Mushrooms</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox6" name="toppings[]" value="Olives" {% if "Olives" in pizza.toppings %}checked{% endif %}>
+                                <label class="form-check-label" for="inlineCheckbox6">Olives</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox7" name="toppings[]" value="Green Peppers" {% if "Green Peppers" in pizza.toppings %}checked{% endif %}>
+                                <label class="form-check-label" for="inlineCheckbox7">Green Peppers</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox8" name="toppings[]" value="Onions" {% if "Onions" in pizza.toppings %}checked{% endif %}>
+                                <label class="form-check-label" for="inlineCheckbox8">Onions</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox9" name="toppings[]" value="Pineapple" {% if "Pineapple" in pizza.toppings %}checked{% endif %}>
+                                <label class="form-check-label" for="inlineCheckbox9">Pineapple</label>
+                            </div>
                         </div>
+                        <input type="hidden" name="pizza_id" value="{{ pizza.id }}">
                         <div class="text-end">
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </form>
                 </div>

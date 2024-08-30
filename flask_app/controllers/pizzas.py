@@ -67,7 +67,7 @@ def edit_pizza(pizza_id):
         flash("Please log in.", "login")
         return redirect("/")
 
-    pizza = Pizza.find_by_user_id(pizza_id)
+    pizza = Pizza.find_by_id_with_user(pizza_id)
     user = User.find_by_user_id(session["user_id"])
     return render_template("edit_pizza.html", pizza=pizza, user=user)
 
@@ -85,8 +85,13 @@ def update_pizza():
     if not Pizza.form_is_valid(request.form):
         return redirect(f"/pizzas/{pizza_id}/edit")
 
+    form_data = request.form.to_dict()
+
+    # Convert the toppings list to a comma-separated string
+    form_data["toppings"] = ", ".join(request.form.getlist("toppings[]"))
+
     # down here the form is valid
-    Pizza.update(request.form)
+    Pizza.update(form_data)
     return redirect(f"/pizzas/{pizza_id}")
 
 
