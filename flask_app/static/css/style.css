@@ -1,10 +1,18 @@
 body {
-    background-color: #333;
-    color: #f8f9fa;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(147, 6, 6, 0.947);
+    background-image: url("/static/css/images/background.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 140vh;
+    margin: 0;
+    padding: 0;
 }
 
 .custom-box {
-    background-color: #444;
+    background-image: url("/static/css/images/something.jpeg");
+    color: #555;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
