@@ -37,7 +37,7 @@ class Pizza:
     def find_all(cls):
         """This method finds all the pizzas in the database."""
 
-        query = "SELECT * FROM pizzas:"
+        query = "SELECT * FROM pizzas;"
         list_of_dicts = connectToMySQL(Pizza._db).query_db(query)
         pprint(list_of_dicts)
         pizzas = []
