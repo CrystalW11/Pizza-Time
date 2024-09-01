@@ -14,6 +14,7 @@ class Order:
         self.type = data["type"]
         self.pizzas = data["pizzas"]
         self.price = data["price"]
+        self.status = data.get("status", "unconfirmed")
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
         self.user_id = data["user_id"]
@@ -43,10 +44,8 @@ class Order:
                 total_price += 18.00
 
         query = """
-        INSERT INTO orders
-        (type, pizzas, price, created_at, updated_at, user_id)
-        VALUES
-        (%(type)s, %(pizzas)s, %(price)s, NOW(), NOW(), %(user_id)s);
+        INSERT INTO orders (type, pizzas, price, status, user_id, created_at, updated_at)
+        VALUES (%(type)s, %(pizzas)s, %(price)s, 'unconfirmed', %(user_id)s, NOW(), NOW());
         """
 
         data = {
@@ -117,7 +116,7 @@ class Order:
             elif pizza.size == "large":
                 total_price += 18.00
 
-        # Join the list of pizzas into a comma-separated string if storing in a single field
+        # Join the list of pizzas into a comma-separated string
         pizzas_str = ",".join(form_data["pizzas"])
 
         query = """
@@ -145,3 +144,14 @@ class Order:
         query = "DELETE FROM orders WHERE id = %(order_id)s;"
         data = {"order_id": order_id}
         return connectToMySQL(cls._db).query_db(query, data)
+
+    @classmethod
+    def update_status(cls, order_id, status):
+        """This method updates the status of an order."""
+        query = """
+        UPDATE orders
+        SET status = %(status)s, updated_at = NOW()
+        WHERE id = %(order_id)s;
+        """
+        data = {"order_id": order_id, "status": status}
+        connectToMySQL(cls._db).query_db(query, data)
