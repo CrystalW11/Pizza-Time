@@ -5,6 +5,6 @@ files:
     destination: /home/ec2-user/pizza-time
 hooks:
   AfterInstall:
-    - location: scripts/restart_server.sh
+    - location: restart_server.sh
       timeout: 300
       runas: ec2-user
