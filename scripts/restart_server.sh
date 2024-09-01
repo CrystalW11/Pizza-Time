@@ -10,7 +10,7 @@ source venv/bin/activate
 pkill gunicorn
 
 # Start Gunicorn to serve the app with logging
-gunicorn --bind 0.0.0.0:80 wsgi:app
+gunicorn --bind 0.0.0.0:8080 wsgi:app
 
 # Check if Gunicorn starts successfully
 if [ $? -ne 0 ]; then
