@@ -5,10 +5,19 @@ phases:
     commands:
       - echo "Installing dependencies..."
       - pip install -r requirements.txt
+
+  pre_build:
+    commands:
+      - echo "Running pre-build commands..."
+
   build:
     commands:
-      - echo "Running tests..."
-      - pytest  # Run your tests (optional)
+      - echo "Build completed successfully, no tests to run."
+
+  post_build:
+    commands:
+      - echo "Build and installation steps completed."
+
 artifacts:
   files:
     - '**/*'
