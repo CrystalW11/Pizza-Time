@@ -3,23 +3,14 @@
 # Navigate to the project directory
 cd /home/ec2-user/pizza-time || exit
 
-# Check if virtual environment exists, if not create it
-if [ ! -d "venv" ]; then
-    echo "Virtual environment not found. Creating one..."
-    python3 -m venv venv
-fi
-
 # Activate the virtual environment
-source venv/bin/activate || { echo "Failed to activate virtual environment"; exit 1; }
-
-# Install gunicorn if not already installed
-pip show gunicorn > /dev/null 2>&1 || pip install gunicorn
+source venv/bin/activate
 
 # Stop any existing Gunicorn process
-pkill gunicorn
+sudo pkill gunicorn
 
-# Start Gunicorn to serve the app, with logging
-gunicorn --bind 0.0.0.0:80 wsgi:app
+# Start Gunicorn to serve the app with sudo
+sudo gunicorn --bind 0.0.0.0:80 wsgi:app
 
 # Check if Gunicorn started successfully
 if [ $? -ne 0 ]; then
