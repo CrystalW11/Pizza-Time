@@ -19,7 +19,7 @@ pip show gunicorn > /dev/null 2>&1 || pip install gunicorn
 pkill gunicorn
 
 # Start Gunicorn to serve the app, with logging
-gunicorn --bind 0.0.0.0:80 wsgi:app --access-logfile /home/ec2-user/pizza-time/logs/access.log --error-logfile /home/ec2-user/pizza-time/logs/error.log
+gunicorn --bind 0.0.0.0:80 wsgi:app
 
 # Check if Gunicorn started successfully
 if [ $? -ne 0 ]; then
