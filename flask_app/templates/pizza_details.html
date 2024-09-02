@@ -45,15 +45,15 @@
             </p>
         </div>
     </div>
-    <div class="container">
+    <div class="container centered-container">
         <h2 class="display-3 mb-3">Created By: {{ pizza.user.first_name }}</h2>
         <p>Method: {{ pizza.method }}</p>
         <p>Size: {{ pizza.size }}</p>
         <p>Crust: {{ pizza.crust }}</p>
         <p>Toppings: {{ pizza.toppings }}</p>
         {% if user.id == pizza.user_id %}
-        <a href="/pizzas/{{ pizza.id }}/edit">Edit</a>
-        <a href="/pizzas/{{ pizza.id }}/delete">Delete</a>
+        <a class="btn" href="/pizzas/{{ pizza.id }}/edit">Edit</a>
+        <a class="btn" href="/pizzas/{{ pizza.id }}/delete">Delete</a>
         {% endif %}
     </div>
     <!-- Dude please. -->

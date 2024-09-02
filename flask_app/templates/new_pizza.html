@@ -13,10 +13,6 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
         <div class="container">
-            <a class="navbar-brand" href="/pizzas/all">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
@@ -27,7 +23,7 @@
                         <a class="nav-link" href="/orders/new">+ Create A New Order</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/pizzas/all">Pizza Pies</a>
+                        <a class="nav-link active" aria-current="page" href="/pizzas/all">All Pizzas</a>
                     </li>
                     <li class="nav-item">
                     </li>
@@ -58,7 +54,7 @@
         {% endif %}
         {% endwith %}
 
-        <div class="card shadow mb-3">
+        <div class="card card-custom shadow mb-3">
             <div class="bard-body mb-3 p-3">
                 <form action="/pizzas/create" method="post">
                     <input type="hidden" name="user_id" value="{{ session.user_id }}" />
@@ -92,47 +88,47 @@
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="toppings[]"
                                 value="Extra Cheese">
-                            <label class="form-check-label" for="inlineCheckbox1">Extra Cheese</label>
+                            <label class="form-check-label-c" for="inlineCheckbox1">Extra Cheese</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="toppings[]"
                                 value="Pepperoni">
-                            <label class="form-check-label" for="inlineCheckbox2">Pepperoni</label>
+                            <label class="form-check-label-p" for="inlineCheckbox2">Pepperoni</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="toppings[]"
                                 value="Sausage">
-                            <label class="form-check-label" for="inlineCheckbox3">Sausage</label>
+                            <label class="form-check-label-s" for="inlineCheckbox3">Sausage</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="toppings[]"
                                 value="Canadian Bacon">
-                            <label class="form-check-label" for="inlineCheckbox4">Canadian Bacon</label>
+                            <label class="form-check-label-cb" for="inlineCheckbox4">Canadian Bacon</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="toppings[]"
                                 value="Mushrooms">
-                            <label class="form-check-label" for="inlineCheckbox5">Mushrooms</label>
+                            <label class="form-check-label-m" for="inlineCheckbox5">Mushrooms</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox6" name="toppings[]"
                                 value="Olives">
-                            <label class="form-check-label" for="inlineCheckbox6">Olives</label>
+                            <label class="form-check-label-ol" for="inlineCheckbox6">Olives</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox7" name="toppings[]"
                                 value="Green Peppers">
-                            <label class="form-check-label" for="inlineCheckbox7">Green Peppers</label>
+                            <label class="form-check-label-gp" for="inlineCheckbox7">Green Peppers</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox8" name="toppings[]"
                                 value="Onions">
-                            <label class="form-check-label" for="inlineCheckbox8">Onions</label>
+                            <label class="form-check-label-on" for="inlineCheckbox8">Onions</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox9" name="toppings[]"
                                 value="Pineapple">
-                            <label class="form-check-label" for="inlineCheckbox9">Pineapple</label>
+                            <label class="form-check-label-pa" for="inlineCheckbox9">Pineapple</label>
                         </div>
 
                     </div>

@@ -34,3 +34,191 @@ body {
     justify-content: flex-start;
 }
 
+.centered-container {
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 20px;
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    background-image: url("/static/css/images/cutb.jpeg");
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+h2 {
+    color: #fafaf6;
+    text-shadow: 2px 2px 5px rgba(65, 63, 63, 0.947);
+}
+
+.btn {
+    color: rgb(5, 5, 130);
+    text-shadow: 2px 2px 5px rgb(248, 248, 248);
+}
+
+.centered-container p {
+    color: rgb(24, 24, 24);
+    text-shadow: 2px 2px 5px rgba(33, 194, 194, 0.947);
+}
+
+.table-custom {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+.table-custom th, .table-custom td {
+    padding: 12px;
+}
+
+.table-custom th {
+    color: #fff;
+}
+
+.table-custom th.one {
+    background-image: url("/static/css/images/travel.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #000000;
+    text-shadow: 2px 2px 5px rgb(248, 248, 248);
+}
+
+.table-custom th.two {
+    background-image: url("/static/css/images/size.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #000000;
+    text-shadow: 2px 2px 5px rgb(248, 248, 248);
+}
+
+.table-custom th.three {
+    background-image: url("/static/css/images/dough.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #000000;
+    text-shadow: 2px 2px 5px rgb(248, 248, 248);
+}
+
+.table-custom th.four {
+    background-image: url("/static/css/images/toppings.jpeg");
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
+    color: #000000;
+    text-shadow: 2px 2px 5px rgb(219, 141, 141);
+}
+
+.table-custom th.five {
+    background-image: url("/static/css/images/people.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #000000;
+    text-shadow: 2px 2px 5px rgb(248, 248, 248);
+}
+
+.table-custom th.six {
+    background-image: url("/static/css/images/actions.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #000000;
+    text-shadow: 2px 2px 5px rgb(248, 248, 248);
+}
+
+.table-custom tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.card-custom {
+    background-image: url("/static/css/images/marble.jpeg");
+}
+
+.form-check-label-c {
+    background-color: rgb(169, 165, 165);
+    color: yellow;
+}
+
+.form-check-label-p {
+    background-color: rgb(169, 165, 165);
+    color: rgb(199, 5, 5);
+    text-shadow: 2px 2px 5px rgba(228, 136, 111, 0.758);
+    font-weight: bold;
+}
+
+.form-check-label-s {
+    background-color: rgb(169, 165, 165);
+    color: rgb(203, 85, 21);
+    text-shadow: 2px 2px 5px rgba(211, 237, 64, 0.734);
+}
+
+.form-check-label-cb {
+    background-color: rgb(169, 165, 165);
+    color: rgb(154, 40, 89);
+    text-shadow: 2px 2px 5px rgba(238, 121, 172, 0.734);
+}
+
+.form-check-label-m {
+    background-color: rgb(169, 165, 165);
+    color: rgb(5, 46, 85);
+}
+
+.form-check-label-ol {
+    background-color: rgb(169, 165, 165);
+    color: rgb(5, 129, 52);
+    text-shadow: 2px 2px 5px rgba(15, 228, 89, 0.734);
+}
+
+.form-check-label-gp {
+    background-color: rgb(169, 165, 165);
+    color: rgb(43, 108, 5);
+    text-shadow: 2px 2px 5px rgb(13, 222, 13);
+    box-shadow: #f1f1f1;
+}
+
+.form-check-label-on {
+    background-color: rgb(169, 165, 165);
+    color: rgb(5, 84, 88);
+    text-shadow: 2px 2px 5px rgb(25, 236, 247);
+    box-shadow: #f1f1f1;
+}
+
+.form-check-label-pa {
+    background-color: rgb(169, 165, 165);
+    color: rgb(239, 123, 15);
+    text-shadow: 2px 2px 5px rgb(209, 235, 94);
+    box-shadow: #f1f1f1;
+}
+
+.card-body-custom {
+    background-image: url("/static/css/images/marble.jpeg");
+}
+
+h4 {
+    text-shadow: 2px 2px 5px rgb(92, 92, 91);
+}
+
+.price-info {
+    text-shadow: 2px 2px 5px rgb(164, 217, 193);
+}
+
+.cust-card {
+    background-image: url("/static/css/images/marble.jpeg");
+}
+
+.card-bod {
+    background-image: url("/static/css/images/marble.jpeg");
+}
+
+.custom-card-background {
+    background-image: url("/static/css/images/marble.jpeg");
+    transition: transform 0.3s ease-in-out;
+}
+
+.custom-card-background:hover {
+    transform: scale(1.05); 
+}
+
+.edit-bod {
+    background-image: url("/static/css/images/marble.jpeg");
+}
+
+.confirm-bod {
+    background-image: url("/static/css/images/marble.jpeg");
+}

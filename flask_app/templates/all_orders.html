@@ -13,21 +13,16 @@
 <body class="orders">
     <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
         <div class="container">
-            <a class="navbar-brand" href="/">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/orders/new">Create New Order</a>
+                        <a class="nav-link" href="/pizzas/new">+ Create A New Pizza</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/orders/new">+ Create New Order</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/pizzas/all">All Pizzas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/users/logout">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -47,7 +42,7 @@
         {% if orders %}
         <div class="list-group">
             {% for order in orders %}
-            <a href="/orders/{{ order.id }}" class="list-group-item list-group-item-action">
+            <a href="/orders/{{ order.id }}" class="list-group-item list-group-item-action custom-card-background">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">Order ID: {{ order.id }}</h5>
                     <small>{{ order.created_at.strftime('%B %d, %Y %I:%M %p') }}</small>
