@@ -19,6 +19,15 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/orders/all">View Your Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pizzas/new">+ Create A New Pizza</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/orders/new">+ Create A New Order</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/pizzas/all">All Pizzas</a>
                     </li>
                     <li class="nav-item">
@@ -42,8 +51,8 @@
         <p>Crust: {{ pizza.crust }}</p>
         <p>Toppings: {{ pizza.toppings }}</p>
         {% if user.id == pizza.user_id %}
-            <a href="/pizzas/{{ pizza.id }}/edit">Edit</a>
-            <a href="/pizzas/{{ pizza.id }}/delete">Delete</a>
+        <a href="/pizzas/{{ pizza.id }}/edit">Edit</a>
+        <a href="/pizzas/{{ pizza.id }}/delete">Delete</a>
         {% endif %}
     </div>
     <!-- Dude please. -->
