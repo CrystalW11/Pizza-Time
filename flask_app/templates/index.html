@@ -1,123 +1,212 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="static/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <title>Pizza</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <h1 class="text-center mb-5 mt-5">Pizza Shack</h1>
-        <div class="row justify-content-center">
-            <div class="col-md-5 mb-4">
-                <div class="custom-box">
-                    <h2 class="mb-4">Register</h2>
-                    {# register errors here #}
-                    {% with messages = get_flashed_messages(category_filter=["register"]) %}
-                    {% if messages %}
-                    {% for message in messages %}
-                    <div class="alert alert-dismissible alert-danger">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        {{ message }}
-                    </div>
-                    {% endfor %}
-                    {% endif %}
-                    {% endwith %}
-                    <form action="/users/register" method="post">
-                        <div class="mb-3">
-                            <label for="first_name" class="form-label">First Name:</label>
-                            <input type="text" name="first_name" id="first_name" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="last_name" class="form-label">Last Name:</label>
-                            <input type="text" name="last_name" id="last_name" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" name="email" id="email" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password:</label>
-                            <input type="password" name="password" id="password" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="confirm_password" class="form-label">Confirm Password:</label>
-                            <input type="password" name="confirm_password" id="confirm_password" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="address" class="form-label">Address:</label>
-                            <input type="text" name="address" id="address" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="city" class="form-label">City:</label>
-                            <input type="text" name="city" id="city" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="state" class="form-label">State:</label>
-                            <select name="state" id="state" class="form-select"></select>
-                        </div>
-                        <div class="my-4">
-                            <button type="submit" class="btn btn-primary">Register</button>
-                        </div>
-                    </form>
-                </div>
+      <h1 class="text-center mb-5 mt-5">Pizza Shack</h1>
+      <div class="row justify-content-center">
+        <div class="col-md-5 mb-4">
+          <div class="custom-box">
+            <h2 class="mb-4">Register</h2>
+            {# register errors here #} {% with messages =
+            get_flashed_messages(category_filter=["register"]) %} {% if messages
+            %} {% for message in messages %}
+            <div class="alert alert-dismissible alert-danger">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+              ></button>
+              {{ message }}
             </div>
-            <div class="col-md-5">
-                <div class="custom-box">
-                    <h2 class="mb-4">Login</h2>
-                    {# login errors here #}
-                    {% with messages = get_flashed_messages(category_filter=["login"])%}
-                    {% if messages %}
-                    {% for message in messages %}
-                    <div class="alert alert-dismissible alert-danger">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        {{ message }}
-                    </div>
-                    {% endfor %}
-                    {% endif %}
-                    {% endwith %}
-                    <form action="/users/login" method="post">
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="text" name="email" id="email" class="form-control">
-                        </div>
-                        <div class="mb-4">
-                            <label for="password" class="form-label">Password:</label>
-                            <input type="password" name="password" id="password" class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </div>
-            </div>
+            {% endfor %} {% endif %} {% endwith %}
+            <form action="/users/register" method="post">
+              <div class="mb-3">
+                <label for="first_name" class="form-label">First Name:</label>
+                <input
+                  type="text"
+                  name="first_name"
+                  id="first_name"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="last_name" class="form-label">Last Name:</label>
+                <input
+                  type="text"
+                  name="last_name"
+                  id="last_name"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="confirm_password" class="form-label"
+                  >Confirm Password:</label
+                >
+                <input
+                  type="password"
+                  name="confirm_password"
+                  id="confirm_password"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Address:</label>
+                <input
+                  type="text"
+                  name="address"
+                  id="address"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="city" class="form-label">City:</label>
+                <input type="text" name="city" id="city" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label for="state" class="form-label">State:</label>
+                <select name="state" id="state" class="form-select"></select>
+              </div>
+              <div class="my-4">
+                <button type="submit" class="btn btn-primary">Register</button>
+              </div>
+            </form>
+          </div>
         </div>
+        <div class="col-md-5">
+          <div class="custom-box">
+            <h2 class="mb-4">Login</h2>
+            {# login errors here #} {% with messages =
+            get_flashed_messages(category_filter=["login"])%} {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-dismissible alert-danger">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+              ></button>
+              {{ message }}
+            </div>
+            {% endfor %} {% endif %} {% endwith %}
+            <form action="/users/login" method="post">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="password" class="form-label">Password:</label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  class="form-control"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
-        // iterates over states for the select feature
-        const states = [
-            "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
-            "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
-            "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
-            "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
-            "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
-        ];
+      // iterates over states for the select feature
+      const states = [
+        "AL",
+        "AK",
+        "AZ",
+        "AR",
+        "CA",
+        "CO",
+        "CT",
+        "DE",
+        "FL",
+        "GA",
+        "HI",
+        "ID",
+        "IL",
+        "IN",
+        "IA",
+        "KS",
+        "KY",
+        "LA",
+        "ME",
+        "MD",
+        "MA",
+        "MI",
+        "MN",
+        "MS",
+        "MO",
+        "MT",
+        "NE",
+        "NV",
+        "NH",
+        "NJ",
+        "NM",
+        "NY",
+        "NC",
+        "ND",
+        "OH",
+        "OK",
+        "OR",
+        "PA",
+        "RI",
+        "SC",
+        "SD",
+        "TN",
+        "TX",
+        "UT",
+        "VT",
+        "VA",
+        "WA",
+        "WV",
+        "WI",
+        "WY",
+      ];
 
-        const stateSelect = document.getElementById("state");
+      const stateSelect = document.getElementById("state");
 
-        states.forEach(state => {
-            const option = document.createElement("option");
-            option.value = state;
-            option.textContent = state;
-            stateSelect.appendChild(option);
-        });
+      states.forEach((state) => {
+        const option = document.createElement("option");
+        option.value = state;
+        option.textContent = state;
+        stateSelect.appendChild(option);
+      });
     </script>
-</body>
-
-</html>
-
+  </body>
 </html>
