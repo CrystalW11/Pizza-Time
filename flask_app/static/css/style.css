@@ -100,8 +100,6 @@ h2 {
 
 .table-custom th.four {
     background-image: url("/static/css/images/toppings.jpeg");
-    /* background-size: cover; */
-    /* background-repeat: no-repeat; */
     color: #000000;
     text-shadow: 2px 2px 5px rgb(219, 141, 141);
 }
