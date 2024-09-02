@@ -67,7 +67,7 @@
                             <option value="">Select a Pizza</option>
                             {% for pizza in pizzas %}
                             <option value="{{ pizza.id }}">
-                                {{ pizza.size }}, {{ pizza.crust }}, Top: {{ pizza.toppings }}
+                                {{ pizza.size | capitalize}}, {{ pizza.crust | capitalize}}, Top: {{ pizza.toppings }}
                             </option>
                             {% endfor %}
                         </select>
@@ -142,11 +142,11 @@
                 input.value = pizzaId;
 
                 let pizzaPrice = 0.0;
-                if (pizzaText.includes("small")) {
+                if (pizzaText.includes("Small")) {
                     pizzaPrice = 10.00;
-                } else if (pizzaText.includes("medium")) {
+                } else if (pizzaText.includes("Medium")) {
                     pizzaPrice = 14.00;
-                } else if (pizzaText.includes("large")) {
+                } else if (pizzaText.includes("Large")) {
                     pizzaPrice = 18.00;
                 }
                 totalPrice += pizzaPrice;

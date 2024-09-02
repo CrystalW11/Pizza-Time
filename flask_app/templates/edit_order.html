@@ -36,6 +36,18 @@
     <div class="container">
         <h1 class="display-3 mb-3">Edit Order</h1>
 
+        {# Error Messages #}
+        {% with errors = get_flashed_messages() %}
+        {% if errors %}
+        {% for error in errors %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            {{ error }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
         <div class="card shadow mb-3">
             <div class="card-body p-3 card-bod">
                 <form action="/orders/update" method="post" id="orderForm">
@@ -52,7 +64,7 @@
                             <option value="">Select a Pizza</option>
                             {% for pizza in pizzas %}
                             <option value="{{ pizza.id }}">
-                                {{ pizza.size }}, {{ pizza.crust }}, Top: {{ pizza.toppings }}
+                                {{ pizza.size | capitalize}}, {{ pizza.crust | capitalize}}, Top: {{ pizza.toppings }}
                             </option>
                             {% endfor %}
                         </select>

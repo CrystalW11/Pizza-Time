@@ -71,9 +71,9 @@
         <tbody>
           {% for pizza in pizzas %}
           <tr>
-            <td>{{pizza.method}}</td>
-            <td>{{pizza.size}}</td>
-            <td>{{pizza.crust}}</td>
+            <td>{{pizza.method | capitalize}}</td>
+            <td>{{pizza.size | capitalize}}</td>
+            <td>{{pizza.crust | capitalize}}</td>
             <td>{{pizza.toppings}}</td>
             <td>{{pizza.user.first_name}}</td>
             <td>
@@ -101,9 +101,9 @@
         <tbody>
           {% for pizza in pizzas %} {% if pizza.user_id == session.user_id %}
           <tr>
-            <td>{{pizza.method}}</td>
-            <td>{{pizza.size}}</td>
-            <td>{{pizza.crust}}</td>
+            <td>{{pizza.method | capitalize}}</td>
+            <td>{{pizza.size | capitalize}}</td>
+            <td>{{pizza.crust | capitalize}}</td>
             <td>{{pizza.toppings}}</td>
             <td>
               <a href="/pizzas/{{ pizza.id }}">Details</a>

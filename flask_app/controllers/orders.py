@@ -142,7 +142,7 @@ def delete_order(order_id):
         return redirect("/")
 
     Order.delete(order_id)
-    return redirect("/orders/new")
+    return redirect("/orders/all")
 
 
 @app.post("/orders/process")
