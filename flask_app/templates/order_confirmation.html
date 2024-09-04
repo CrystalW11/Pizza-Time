@@ -62,7 +62,7 @@
                 <p class="mt-2"><strong>Delivery Fee:</strong> $4.99</p>
                 <p class="mt-2"><strong>Total Price:</strong> ${{ total_price }}</p>
 
-                <div id="map" style="width: 100%; height: 300px;" class="mb-3"></div>
+                <div id="map" style="width: 100%; height: 300px;" class="mb-3" data-address="{{ user.address }}, {{ user.city }}, {{ user.state }}"></div>
 
                 <div class="text-end">
                     <a href="/orders/confirm/{{ order.id }}/finalize" class="btn btn-success">Confirm Order</a>
@@ -70,36 +70,8 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function initMap() {
-            const userAddress = "{{ user.address }}, {{ user.city }}, {{ user.state }}";
-            const geocoder = new google.maps.Geocoder();
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 15,
-                center: { lat: 0, lng: 0 } // Default center
-            });
-
-            geocoder.geocode({ address: userAddress }, function(results, status) {
-                if (status === "OK") {
-                    map.setCenter(results[0].geometry.location);
-                    const marker = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location
-                    });
-                } else {
-                    alert("Geocode was not successful for the following reason: " + status);
-                }
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            initMap();
-        });
-    </script>
-
+    <script src="{{ url_for('static', filename='js/order_confirmation.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
-
 </html>
