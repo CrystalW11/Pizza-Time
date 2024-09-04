@@ -38,7 +38,6 @@ def create_pizzas():
 
     form_data = request.form.to_dict()
 
-    # Convert the toppings list to a comma-separated string
     form_data["toppings"] = ", ".join(request.form.getlist("toppings[]"))
 
     Pizza.create(form_data)
@@ -87,7 +86,6 @@ def update_pizza():
 
     form_data = request.form.to_dict()
 
-    # Convert the toppings list to a comma-separated string
     form_data["toppings"] = ", ".join(request.form.getlist("toppings[]"))
 
     # down here the form is valid
