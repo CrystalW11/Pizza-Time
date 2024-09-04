@@ -66,9 +66,19 @@
                         <select name="pizzas" id="pizzaSelect" class="form-select">
                             <option value="">Select a Pizza</option>
                             {% for pizza in pizzas %}
-                            <option value="{{ pizza.id }}">
-                                {{ pizza.size | capitalize}}, {{ pizza.crust | capitalize}}, Top: {{ pizza.toppings }}
-                            </option>
+                                {% if pizza.size == 'small' %}
+                                    <option value="{{ pizza.id }}">
+                                        {{ pizza.size | capitalize }}, {{ pizza.crust | capitalize }}, Top: {{ pizza.toppings }} - $10.00
+                                    </option>
+                                {% elif pizza.size == 'medium' %}
+                                    <option value="{{ pizza.id }}">
+                                        {{ pizza.size | capitalize }}, {{ pizza.crust | capitalize }}, Top: {{ pizza.toppings }} - $14.00
+                                    </option>
+                                {% elif pizza.size == 'large' %}
+                                    <option value="{{ pizza.id }}">
+                                        {{ pizza.size | capitalize }}, {{ pizza.crust | capitalize }}, Top: {{ pizza.toppings }} - $18.00
+                                    </option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                         <label for="pizzaSelect">Pizzas:</label>
