@@ -1,65 +1,79 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
     <title>{{pizza.user.first_name}}'s Pizza Details</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/orders/all">View Your Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/pizzas/new">+ Create A New Pizza</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/orders/new">+ Create A New Order</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/pizzas/all">All Pizzas</a>
-                    </li>
-                    <li class="nav-item">
-                    </li>
-                </ul>
-            </div>
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/orders/all"
+                >View Your Orders</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pizzas/new">+ Create A New Pizza</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/orders/new">+ Create A New Order</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pizzas/all">All Pizzas</a>
+            </li>
+            <li class="nav-item"></li>
+          </ul>
         </div>
+      </div>
     </nav>
     <div class="bg-body-secondary mb-3 p-1">
-        <div class="container d-flex justify-content-between align-items-center">
-            <p class="mb-0">{{user.email}}</p>
-            <p class="mb-0">
-                <a href="/users/logout">Logout</a>
-            </p>
-        </div>
+      <div class="container d-flex justify-content-between align-items-center">
+        <p class="mb-0">{{user.email}}</p>
+        <p class="mb-0">
+          <a href="/users/logout">Logout</a>
+        </p>
+      </div>
     </div>
     <div class="container centered-container">
-        <h2 class="display-3 mb-3">Created By: {{ pizza.user.first_name }}</h2>
-        <p>Method: {{ pizza.method }}</p>
-        <p>Size: {{ pizza.size }}</p>
-        <p>Crust: {{ pizza.crust }}</p>
-        <p>Toppings: {{ pizza.toppings }}</p>
-        {% if user.id == pizza.user_id %}
-        <a class="btn" href="/pizzas/{{ pizza.id }}/edit">Edit</a>
-        <a class="btn" href="/pizzas/{{ pizza.id }}/delete">Delete</a>
-        {% endif %}
+      <h2 class="display-3 mb-3">Created By: {{ pizza.user.first_name }}</h2>
+      <p>Method: {{ pizza.method }}</p>
+      <p>Size: {{ pizza.size }}</p>
+      <p>Crust: {{ pizza.crust }}</p>
+      <p>Toppings: {{ pizza.toppings }}</p>
+      {% if user.id == pizza.user_id %}
+      <a class="btn" href="/pizzas/{{ pizza.id }}/edit">Edit</a>
+      <a class="btn" href="/pizzas/{{ pizza.id }}/delete">Delete</a>
+      {% endif %}
     </div>
-    <!-- Dude please. -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
